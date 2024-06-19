@@ -1,4 +1,5 @@
-import { $ } from '@wdio/globals'
+import { $, $$} from '@wdio/globals'
+import scrollScreen from '../../helpers/scrollScreen.js'
 
 class DaftarProduct {
 
@@ -12,7 +13,7 @@ class DaftarProduct {
     get highToLow() { return $('//android.widget.TextView[@text="Price (high to low)"]') }
     get cancel () { return $('//android.widget.TextView[@text="Cancel"]')}
     get gambarJaket() { return $('(//android.view.ViewGroup[@content-desc="test-Item"])[1]/android.view.ViewGroup/android.widget.ImageView') }
-    get addToCart() { return $('//android.view.ViewGroup[@content-desc="test-ADD TO CART"]') }
+    get addToCart() { return $('~test-ADD TO CART') }
     get backToProduct() { return $('//android.view.ViewGroup[@content-desc="test-BACK TO PRODUCTS"]') }
     get remove() { return $('//android.view.ViewGroup[@content-desc="test-REMOVE"]') }
     get continueShop() { return $('//android.view.ViewGroup[@content-desc="test-CONTINUE SHOPPING"]') }
@@ -27,6 +28,12 @@ class DaftarProduct {
     get cart1() { return $('//android.widget.TextView[@text="1"]') }
     get checkout() { return $('//android.view.ViewGroup[@content-desc="test-CHECKOUT"]') }
     get infoCheckout() { return $('//android.widget.TextView[@text="CHECKOUT: INFORMATION"]') }
+    get textItemProduct() { return $$('//*[@content-desc="test-Item title"]') }
+    get priceProducts() { return $$('//*[@content-desc="test-Price"]') }
+    get cardName() { return $$('//*[@content-desc="test-Item"]') }
+    get cancelCheckout() { return $('~test-CANCEL') }
+
+
 
 
     //action
@@ -89,9 +96,44 @@ class DaftarProduct {
     async clickcheckout(){
         await this.checkout.click()
     }
+
+    async clickCancelCheckout () {
+        await this.cancelCheckout.click()
+    }
+
+    async getProductNames() {
+        const names = [] //untuk menyimpan nama-nama produk
+        const productElements = await this.textItemProduct
+        for (const element of productElements) { //untuk mengiterasi melalui setiap elemen dalam productElements.
+            const productName = await element.getText() // ambil text dr setiap element
+            names.push(productName) //masukkin nama produk ke arraynya. tp di console arraynya []
+        }
+        return names
+    }
+
+    async getProductsPrices(){
+        const prices = []
+        const productPrices = await this.priceProducts
+        for (const product of productPrices) {
+            const priceText = await product.getText()
+            prices.push(priceText)
+        }
+        return prices
+    }
     
+    async scrollAllCardName(){
+        for (let i = 0; i < 10; i++) {                   
+            let card = await this.cardName
+            if(card.length === 6 ){
+                break
+            }       
+            await scrollScreen(600,500)
+        }
+    }
+
+}
+
 
     
-}
 
 export default new DaftarProduct()

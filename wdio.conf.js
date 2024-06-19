@@ -60,7 +60,10 @@ export const config = {
             process.cwd(),
             'apk',
             'ecommerce.apk' //nama target apknya apa
-        )
+        ),
+        "appium:settings": {
+            "allowInvisibleElements": true
+        }
     }],
 
     //
