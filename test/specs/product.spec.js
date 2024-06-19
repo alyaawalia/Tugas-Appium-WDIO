@@ -10,18 +10,18 @@ describe('FITUR DAFTAR PRODUCT APLIKASI SWAGLAB', function () {
     })
 
     it('ubah tata letak petak menjadi tata letak daftar', async function() {
-        await DaftarProduct.letakPetak.click()
+        await DaftarProduct.clickletakPetak()
         await expect (DaftarProduct.tombolPlus).toHaveText('+')
     })
 
     it('mengembalikan tata letak daftar menjadi tata letak petak', async function() {
-        await DaftarProduct.letakDaftar.click()
+        await DaftarProduct.clickletakDaftar()
         await expect (DaftarProduct.gambarTas).toBeDisplayed()
     })
 
     it('user melakukan short item by name Z to A', async function() {
-        await DaftarProduct.shortBy.click()
-        await DaftarProduct.Z_to_A.click()
+        await DaftarProduct.clickshortBy()
+        await DaftarProduct.clickZ_to_A()
         // await scrollScreen(800, 100)
         // await driver.pause(2000)
         // // Scroll ke atas buat mastiin elemen 'Sauce Labs Backpack' terlihat
@@ -32,65 +32,65 @@ describe('FITUR DAFTAR PRODUCT APLIKASI SWAGLAB', function () {
     })
 
     it('user melakukan short item by name A to Z', async function() {
-        await DaftarProduct.shortBy.click()
-        await DaftarProduct.A_to_Z.click()
+        await DaftarProduct.clickshortBy()
+        await DaftarProduct.clickA_to_Z()
         
         await expect (DaftarProduct.textTas).toHaveText('Sauce Labs Backpack')
     })
 
     it('user melakukan short item by price low to high', async function() {
-        await DaftarProduct.shortBy.click()
-        await DaftarProduct.lowToHigh.click()
+        await DaftarProduct.clickshortBy()
+        await DaftarProduct.clicklowToHigh()
         await expect (DaftarProduct.textHargaLow).toHaveText('$7.99')
     })
 
     it('user melakukan short item by price high to low', async function() {
-        await DaftarProduct.shortBy.click()
-        await DaftarProduct.highToLow.click()
+        await DaftarProduct.clickshortBy()
+        await DaftarProduct.clickhighToLow()
         await expect (DaftarProduct.textHargaHigh).toHaveText('$49.99')
     })
 
     it('user melakukan short item tetapi cancel', async function() {
-        await DaftarProduct.shortBy.click()
-        await DaftarProduct.cancel.click()
+        await DaftarProduct.clickshortBy()
+        await DaftarProduct.clickcancel()
 
         await expect (LoginPage.product).toHaveText('PRODUCTS')
     })
 
     it('user menambahkan product ke keranjang', async function() { 
-        await DaftarProduct.gambarJaket.click()
+        await DaftarProduct.clickgambarJaket()
         await scrollScreen(600, 100)
         await driver.pause(2000)
-        await DaftarProduct.addToCart.click()
-        await DaftarProduct.backToProduct.click()
+        await DaftarProduct.clickaddToCart()
+        await DaftarProduct.clickbackToProduct()
         await expect (DaftarProduct.cart1).toHaveText('1')
      })
 
      it('user cek keranjang', async function() {
-        await DaftarProduct.gambarJaket.click()
-        await DaftarProduct.cart1.click()
+        await DaftarProduct.clickgambarJaket()
+        await DaftarProduct.clickcart1()
         await expect (DaftarProduct.textJaket).toHaveText('Sauce Labs Fleece Jacket')
      })
 
      it('user menghapus keranjang', async function() {
-        await DaftarProduct.cart1.click()
-        await DaftarProduct.remove.click()
+        await DaftarProduct.clickcart1()
+        await DaftarProduct.clickremove()
         await expect (DaftarProduct.cart).toBeDisplayed()
      })
 
      it('user melanjutkan belanja', async function() {
-        await DaftarProduct.continueShop.click()
+        await DaftarProduct.clickcontinueShop()
         await expect (LoginPage.product).toHaveText('PRODUCTS')
      })
 
      it('user melakukan checkout barang', async function() {
-        await DaftarProduct.gambarJaket.click()
+        await DaftarProduct.clickgambarJaket()
         await scrollScreen(600, 100)
         await driver.pause(2000)
-        await DaftarProduct.addToCart.click()
-        await DaftarProduct.cart1.click()
+        await DaftarProduct.clickaddToCart()
+        await DaftarProduct.clickcart1()
         await scrollScreen(500, 100)
-        await DaftarProduct.checkout.click()
+        await DaftarProduct.clickcheckout()
         await expect (DaftarProduct.infoCheckout).toHaveText('CHECKOUT: INFORMATION')
 
      })

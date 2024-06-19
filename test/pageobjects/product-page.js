@@ -28,6 +28,67 @@ class DaftarProduct {
     get checkout() { return $('//android.view.ViewGroup[@content-desc="test-CHECKOUT"]') }
     get infoCheckout() { return $('//android.widget.TextView[@text="CHECKOUT: INFORMATION"]') }
 
+
+    //action
+    async clickletakPetak(){
+        await this.letakPetak.click()
+    }
+
+    async clickletakDaftar(){
+        await this.letakDaftar.click()
+    }
+
+    async clickshortBy(){
+        await this.shortBy.click()
+    }
+
+    async clickZ_to_A(){
+        await this.Z_to_A.click()
+    }
+
+    async clickA_to_Z(){
+        await this.A_to_Z.click()
+    }
+
+    async clicklowToHigh(){
+        await this.lowToHigh.click()
+    }
+
+    async clickhighToLow(){
+        await this.highToLow.click()
+    }
+
+    async clickcancel(){
+        await this.cancel.click()
+    }
+
+    async clickgambarJaket(){
+        await this.gambarJaket.click()
+    }
+
+    async clickaddToCart(){
+        await this.addToCart.click()
+    }
+
+    async clickbackToProduct(){
+        await this.backToProduct.click()
+    }
+
+    async clickcart1(){
+        await this.cart1.click()
+    }
+
+    async clickremove(){
+        await this.remove.click()
+    }
+
+    async clickcontinueShop(){
+        await this.continueShop.click()
+    }
+
+    async clickcheckout(){
+        await this.checkout.click()
+    }
     
 
     
