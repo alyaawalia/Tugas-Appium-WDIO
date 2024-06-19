@@ -10,6 +10,10 @@ describe('FITUR DAFTAR PRODUCT APLIKASI SWAGLAB', function () {
         await driver.pause(2000)
     })
 
+    after (async function(){
+        await driver.reloadSession()
+    })
+
     it('ubah tata letak petak menjadi tata letak daftar', async function() {
         await DaftarProduct.clickletakPetak()
         await expect (DaftarProduct.tombolPlus).toHaveText('+')
